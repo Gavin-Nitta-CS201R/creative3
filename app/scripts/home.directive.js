@@ -5,8 +5,7 @@ angular.module('Creative3.home', [])
     return {
       restrict: 'E',
       link: function ($scope) {
-        $scope.homeMessage = 'We are here';
-        console.log('home dir');
+        $scope.homeMessage = 'This is the home directive';
       }
     }
   }]);
