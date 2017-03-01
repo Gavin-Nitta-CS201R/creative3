@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title>ImagesManager</title>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+	<script src="imagesManager.js"></script>
+
+</head>
+<body ng-app="Images" ng-controller="ImagesCtrl">
+	<div ng-repeat="image in images | orderBy: '-upvotes'">
+		<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+		{{image.title}} - upvotes: {{post.upvotes}}
+</body>
+</html>
