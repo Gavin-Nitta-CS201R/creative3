@@ -1,5 +1,14 @@
 home-page {
-  p {
-    color: red;
+  .info {
+    margin: 20px;
+  }
+  .choose-color {
+    margin-top: 30px;
+    p {
+      margin-right: 10px;
+    }
+  }
+  md-input-container label:not(.md-no-float):not(.md-container-ignore), md-input-container .md-placeholder {
+    padding: 2px;
   }
 }

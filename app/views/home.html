@@ -1,4 +1,27 @@
-<home-page>
-  <p>this is some text</p>
-  {{homeMessage}}
+<home-page layout="column" layout-align="center center">
+
+  <p class="info">This is a free area to draw in!</p>
+
+  <div pw-canvas version="version" options="{undo: true, width: 600, height: 500, color: selectedColor, lineWidth: lineWidth, imageSrc: imageSrc}"></div>
+  <div layout="row" layout-align="center center" class="choose-color">
+    <p>Choose a color:</p>
+    <color-picker ng-model="selectedColor"></color-picker>
+  </div>
+  <md-slider-container>
+    <span>Width</span>
+    <md-slider flex min="1" max="30" ng-model="lineWidth" aria-label="lineWidth" id="lineWidth">
+    </md-slider>
+    <md-input-container>
+      <input flex type="number" ng-model="lineWidth" aria-label="lineWidth" aria-controls="lineWidth">
+    </md-input-container>
+  </md-slider-container>
+  <div>
+    <md-input-container class="md-block">
+      <label>Background Image</label>
+      <input ng-model="imageSrc">
+    </md-input-container>
+  </div>
+  <md-button class="md-raised md-primary" ng-click="undo()" ng-disabled="version < 1">Undo</md-button>
+
+
 </home-page>
