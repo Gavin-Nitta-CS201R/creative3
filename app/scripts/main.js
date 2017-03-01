@@ -1,4 +1,4 @@
-angular.module('Creative3', ['ui.router'])
+angular.module('Creative3', ['ui.router', 'ngMaterial'])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('home', {
       url: '/home',
