@@ -2,4 +2,10 @@
   height: 60px;
   background-color: #333;
   color: white;
+  padding: 0px 10px;
+
+  .active {
+    color: red;
+    opacity: .5;
+  }
 }

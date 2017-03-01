@@ -19,8 +19,11 @@
     <label>Background Image</label>
     <input ng-change="image()" ng-model="imageSrc">
   </md-input-container>
-  <md-button class="md-raised md-primary" ng-click="undo()" ng-disabled="version < 1">Undo</md-button>
-  <md-button class="md-raised md-primary" ng-click="download()">Download</md-button>
+  <div layout="row" layout-align="center center">
+    <md-button class="md-raised md-primary" ng-click="undo()" ng-disabled="version < 1">Undo</md-button>
+    <md-button class="md-raised md-warn" ng-click="confirmClear()" ng-disabled="version < 1">Clear</md-button>
+  </div>
+  <md-button class="md-raised md-primary" ng-click="upload()" ng-disabled="version < 1">Upload</md-button>
 
 
 </home-page>

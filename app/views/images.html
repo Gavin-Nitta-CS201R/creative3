@@ -1,0 +1,20 @@
+<images-page>
+  <div layout-fill layout="column" layout-align="center center" class="progress" ng-show="!loaded">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    <p>Loading Images</p>
+  </div>
+  <div layout="row" layout-wrap>
+    <md-card ng-repeat="image in images" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+      <md-card-title>
+        <md-card-title-media>
+          <h5 layout="row" layout-align="center center">{{image.name}}</h5>
+          <div ng-style="{'background-image': 'url(' + image.uri + ')'}" class="md-media-lg card-media"></div>
+        </md-card-title-media>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="download(image)">Download</md-button>
+        <md-button>Action 2</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+</images-page>
