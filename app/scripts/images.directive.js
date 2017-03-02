@@ -7,6 +7,7 @@ angular.module('Creative3.images', [])
         restrict: 'E',
         link: function ($scope) {
           $scope.images = [];
+          $scope.votedImages = [];
           $scope.loaded = false;
 
           function init() {
@@ -17,7 +18,24 @@ angular.module('Creative3.images', [])
               }).catch(function (err) {
                 $scope.loaded = true;
               });
+
+            $scope.votedImages = JSON.parse(localStorage.getItem('votedImages')) || [];
           }
+
+          $scope.vote = function (image) {
+            $http.post('http://localhost:3000/vote/' + image.id)
+              .then(function (resp) {
+                $scope.votedImages.push(image.id);
+                localStorage.setItem('votedImages', JSON.stringify($scope.votedImages));
+                image.votes = image.votes + 1;
+              }).catch(function (err) {
+                console.log(err);
+              });
+          };
+
+          $scope.alreadyVoted = function (id) {
+            return $scope.votedImages.includes(id);
+          };
 
           $scope.download = function (image) {
             var anchor = document.createElement('a');

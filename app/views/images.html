@@ -3,18 +3,39 @@
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     <p>Loading Images</p>
   </div>
-  <div layout="row" layout-wrap>
-    <md-card ng-repeat="image in images" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-      <md-card-title>
-        <md-card-title-media>
-          <h5 layout="row" layout-align="center center">{{image.name}}</h5>
-          <div ng-style="{'background-image': 'url(' + image.uri + ')'}" class="md-media-lg card-media"></div>
-        </md-card-title-media>
-      </md-card-title>
-      <md-card-actions layout="row" layout-align="end center">
-        <md-button ng-click="download(image)">Download</md-button>
-        <md-button>Action 2</md-button>
-      </md-card-actions>
-    </md-card>
+  <div ng-show="images.length === 0" layout-fill layout="column" layout-align="center center">
+    There are no images uploaded. Create an image and upload it to see it here!
+  </div>
+  <div ng-show="images.length > 0">
+    <div layout="row" layout-align="center center">
+      <md-input-container md-no-float flex="50" class="md-block">
+        <input ng-model="searchText" placeholder="Search Images">
+      </md-input-container>
+    </div>
+    <div layout="row" layout-wrap>
+      <md-card ng-repeat="image in images | filter: searchText | orderBy: '-votes'">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Title: {{image.name}}</span>
+            <span class="md-subhead">Author: {{image.creator}}</span>
+            <span class="md-subhead">Votes: {{image.votes}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="space-between">
+          <div id="card" ng-style="{'background-image': 'url(' + image.uri + ')'}" class="md-media-xl card-media"></div>
+
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="space-around center">
+          <md-button ng-click="vote(image)" ng-disabled="alreadyVoted(image.id)" class="md-icon-button" aria-label="Up Vote">
+            <md-tooltip md-direction="bottom">Vote</md-tooltip>
+            <i class="material-icons">thumb_up</i>
+          </md-button>
+          <md-button ng-click="download(image)" class="md-icon-button" aria-label="Up Vote">
+            <md-tooltip md-direction="bottom">Download</md-tooltip>
+            <i class="material-icons">file_download</i>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
   </div>
 </images-page>
