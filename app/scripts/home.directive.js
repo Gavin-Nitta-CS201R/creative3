@@ -39,7 +39,7 @@ angular.module('Creative3.home', ['pw.canvas-painter', 'color.picker'])
                 .cancel('Cancel');
               $mdDialog.show(creatorPrompt).then(function (creator) {
                 obj.creator = creator;
-                $http.post('http://localhost:3000/image', obj)
+                $http.post('http://cs201.nittakazoku.com:3000/image', obj)
                   .then(function () {
                     $mdToast.show(
                       $mdToast.simple()

@@ -11,7 +11,7 @@ angular.module('Creative3.images', [])
           $scope.loaded = false;
 
           function init() {
-            $http.get('http://localhost:3000/image')
+            $http.get('http://cs201.nittakazoku.com:3000/image')
               .then(function (images) {
                 $scope.loaded = true;
                 $scope.images = images.data;
@@ -23,7 +23,7 @@ angular.module('Creative3.images', [])
           }
 
           $scope.vote = function (image) {
-            $http.post('http://localhost:3000/vote/' + image.id)
+            $http.post('http://cs201.nittakazoku.com:3000/vote/' + image.id)
               .then(function (resp) {
                 $scope.votedImages.push(image.id);
                 localStorage.setItem('votedImages', JSON.stringify($scope.votedImages));
