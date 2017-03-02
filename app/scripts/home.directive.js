@@ -106,8 +106,8 @@ angular.module('Creative3.home', ['pw.canvas-painter', 'color.picker'])
             }
 
             // default offset is center
-            offsetX = typeof offsetX === "number" ? offsetX : 0.5;
-            offsetY = typeof offsetY === "number" ? offsetY : 0.5;
+            offsetX = typeof offsetX === 'number' ? offsetX : 0.5;
+            offsetY = typeof offsetY === 'number' ? offsetY : 0.5;
 
             // keep bounds [0.0, 1.0]
             if (offsetX < 0) offsetX = 0;
